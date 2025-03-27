@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Haven</title>
+  <link rel="stylesheet" href="ecom.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="reslogo.png" alt="Food Haven Logo">
+      <h1>Food Haven</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#cart">Cart</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="hero">
+      <h2>Fresh, Organic, Delivered</h2>
+      <p>Explore our delicious, healthy, and fresh food options today!</p>
+      <button>Shop Now</button>
+    </section>
+    
+    <section id="products">
+      <h2>Our Featured Products</h2>
+      <div class="product-grid">
+        <div class="product">
+          <img src="apple.jpg" alt="Fresh Apples">
+          <h3>Fresh Apples</h3>
+          <p>$10 per kg</p>
+          <button onclick="addToCart('Fresh Apples', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="bread.jpg" alt="Organic Bread">
+          <h3>Organic Bread</h3>
+          <p>$5 per loaf</p>
+          <button onclick="addToCart('Organic Bread', 5)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="cheese.jpg" alt="Artisan Cheese">
+          <h3>Artisan Cheese</h3>
+          <p>$15 per piece</p>
+          <button onclick="addToCart('Artisan Cheese', 15)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="vegtables.jpg" alt="Fresh Vegetables">
+          <h3>Fresh Vegetables</h3>
+          <p>$8 per basket</p>
+          <button onclick="addToCart('Fresh Vegetables', 8)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="juices.jpg" alt="Fresh Juice">
+          <h3>Fresh Juice</h3>
+          <p>$3 per bottle</p>
+          <button onclick="addToCart('Fresh Juice', 3)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="nuts.jpg" alt="Mixed Nuts">
+          <h3>Mixed Nuts</h3>
+          <p>$12 per jar</p>
+          <button onclick="addToCart('Mixed Nuts', 12)">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+    
+    <section id="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <p>Total: $<span id="total">0</span></p>
+    </section>
+
+    <section id="contact" align="center">
+      <h2>Contact Us</h2><br>
+      <p>Email: <a href="mailto:support@foodhaven.com">support@foodhaven.com</a></p><br>
+      <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+    </section>
+  </main>
+  
+  <footer>
+    <p>© 2025 Food Haven. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      total += price;
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cart-items');
+      const totalElement = document.getElementById('total');
+      
+      cartItems.innerHTML = '';
+      cart.forEach(product => {
+        const li = document.createElement('li');
+        li.textContent = `${product.item} - $${product.price}`;
+        cartItems.appendChild(li);
+      });
+      
+      totalElement.textContent = total;
+    }
+  </script>
+</body>
+</html>
